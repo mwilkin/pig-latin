@@ -11,10 +11,21 @@ var translate = function(string) {
     return false;
   }
 
+  var isQU = function() {
+    if (string[0] === "q" && string[1] === "u") return true;
+    else return false;
+  }
+
   var moveChar = function() {
     if (!isVowel(string[0])) {
-      string += string[0];
-      string = string.slice(1);
+      if (isQU()) {
+        string+=string.slice(0,2);
+        string = string.slice(2);
+      } else {
+        string += string[0];
+        string = string.slice(1);
+      }
+      vowels+="y";
       moveChar();
     }
   }
