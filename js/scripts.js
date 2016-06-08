@@ -2,17 +2,26 @@
 var vowels = "aeiou";
 
 var translate = function(string) {
-  var charToMove;
-  for(var index = 0; index < vowels.length; index ++) {
-    if (!(string[0] === vowels[index])) {
-      charToMove = string[0];
+
+  var isVowel = function(char) {
+
+    for(var index = 0; index < vowels.length; index++) {
+      if (char === vowels[index]) return true;
+    }
+    return false;
+  }
+
+  var moveChar = function() {
+    if (!isVowel(string[0])) {
+      string += string[0];
+      string = string.slice(1);
+      moveChar();
     }
   }
-  if (charToMove) {
-    string = string.slice(1);
-    string+=charToMove;
-  }
+
+  moveChar();
   return string + "ay";
+
 }
 
 
