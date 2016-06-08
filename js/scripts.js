@@ -1,7 +1,7 @@
 // Back-end code
 var vowels = "aeiou";
 
-var translate = function(string) {
+var translateWord = function(string) {
 
   var isVowel = function(char) {
 
@@ -30,14 +30,11 @@ var translate = function(string) {
     }
   }
 
+  string = string.toLowerCase();
   moveChar();
   return string + "ay";
 
 }
-
-
-
-
 
 
 // Front-end code
@@ -45,6 +42,6 @@ $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
     var textInput = $("#textInput").val();
-    $("#results").append("<p>"+translate(textInput)+"</p>");
+    $("#results").append("<p>"+translateWord(textInput)+"</p>");
   });
 });
